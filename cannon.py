@@ -15,6 +15,7 @@ ball = vector(-300, -300)
 speed = vector(0, 0)
 targets = []
 
+
 def tap(x, y):
     "Respond to screen tap."
     if not inside(ball):
@@ -23,15 +24,20 @@ def tap(x, y):
         speed.x = (x + 300) / 25
         speed.y = (y + 300) / 25
 
+
 def inside(xy):
     "Return True if xy within screen."
     return -300 < xy.x < 300 and -300 < xy.y < 300
 
-colors = ['blue', 'orange', 'yellow', 'green', 'purple']
+
+colors = ["blue", "orange", "yellow", "green", "purple"]
+
+
 def selectRandom(colors):
     color = random.choice(colors)
     colors.remove(color)
     return color
+
 
 def draw():
     "Draw ball and targets."
@@ -39,13 +45,14 @@ def draw():
 
     for target in targets:
         goto(target.x, target.y)
-        dot(20, target_color) 
+        dot(20, target_color)
 
     if inside(ball):
         goto(ball.x, ball.y)
-        dot(6, 'red')
+        dot(6, "red")
 
     update()
+
 
 def move():
     "Move ball and targets."
@@ -74,7 +81,8 @@ def move():
         if not inside(target):
             return
 
-    ontimer(move, 30)
+    ontimer(move, 10)
+
 
 target_color = selectRandom(colors)
 
